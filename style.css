@@ -1,0 +1,231 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: #eee;
+}
+:root{
+    --primary-color:  hsl(0, 0%, 30%);
+    --default-padding: .5em;
+    --border-default: #ccc;
+    --border-radius: .5em;
+    --max-width-default:80em
+}
+
+.background{
+    background-color: var(--primary-color)
+}
+.top-header{
+    max-width: var(--max-width-default);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--default-padding);
+    border-bottom:2px solid var(--border-default) ;    
+}
+.header-navigation{
+    text-align: end;
+
+}
+/* menu mobile inicio */
+
+.menu-hamburguer {
+    position: absolute;
+    background-color: hsl(180, 18%, 10%);
+    top: 3em;
+    right: 0;
+    bottom: 10em;
+    left: 0;
+    padding: 0 var(--default-padding);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .5s ease-in-out;
+    max-width: 80em;
+    margin: 0 auto;
+}
+.menu-hamburguer ul {
+    list-style-type: none;
+}
+.menu-hamburguer ul li {
+    padding: .2em 0;
+}
+.menu-hamburguer ul li a{
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: .8em 0;
+    display: block;
+    border-bottom: 2px solid var(--border-default);
+}
+.menu-hamburguer ul li a:hover{
+    background-color: black;
+}
+.input-mobile{
+    height: .1px;
+    outline: transparent;
+}
+
+.span-mobile{
+    background-color: white;
+    height: .2em;
+    width: 2em;
+    background-color: .1em;
+    display: block;
+    position: relative;
+    margin-top: -1em;
+}
+
+.span-mobile::after, .span-mobile::before{
+    content: "";
+    background-color: white;
+    height: .2em;
+    width: 2em;
+    background-color: .1em;
+    display: block;
+    position: absolute;
+}
+
+.span-mobile::after{
+    transform: translateY(8px);
+}
+
+.span-mobile::before{
+    transform: translateY(-8px);
+}
+
+.input-mobile:checked+.label-mobile ~ .menu-hamburguer{
+    max-height: 100vh;
+}
+
+.input-mobile:checked+.label-mobile .span-mobile{
+    background-color: transparent;
+}
+
+.input-mobile:checked+.label-mobile .span-mobile::after{
+    transform: rotate(45deg);
+    transition: .5s ease-in-out;
+}
+
+.input-mobile:checked+.label-mobile .span-mobile::before{
+    transform: rotate(-45deg);
+    transition: .5s ease-in-out;
+}
+/* menu mobile fim */
+.title-main{
+    text-align: center;
+    text-transform: uppercase;
+    padding: var(--default-padding);
+}
+/* .cards-filmes inicio */
+
+.cards-filmes{
+    background-color: var(--primary-color);
+    padding: var(--default-padding);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    max-width: var(--max-width-default);
+    margin: 0 auto;
+}
+ 
+.cards-body{
+    background-color: black;
+    text-align: center;
+    padding: var(--default-padding);
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius);
+    grid-column: span 12;
+}
+
+.cards-body img{
+    max-width: 100%;
+    height: 20em;
+}
+
+.cards-body_title{
+    margin: .25em;
+    text-transform: uppercase;
+}
+
+.cards-body p {
+    text-align: left;
+    padding: var(--default-padding); 
+}
+
+.cards-body a{
+    background-color: var(--primary-color);
+    display: block;
+    width: 70%;
+    margin: auto;
+    padding: var(--default-padding);
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: var(--border-radius);
+}
+
+.cards-body a:hover{
+    background-color: rgb(189, 181, 181);
+    box-shadow: 0 0 20px black inset;
+    color: black;
+}
+
+/* .cards-filmes fim */
+
+
+
+
+
+
+/* medias queries */
+
+@media (min-width:45em){
+    .top-header_title{
+        padding: 0 1em 0 0 ;
+        text-transform: uppercase;
+    }
+    .header-navigation{
+        background-color: rgb(160, 148, 133);
+        flex: 1;
+    }
+    .input-mobile,.label-mobile{
+        display: none;
+    }
+    .menu-hamburguer{
+        position: initial;
+        max-height: initial;
+    }
+    .menu-hamburguer ul{
+        display: flex;
+        justify-content: end;
+        gap: 2em;
+        
+    }
+    .menu-hamburguer ul li a{
+        border-bottom: initial;
+    }
+}
+
+
+@media(min-width:40em){
+    .cards-body{
+        grid-column: span 6;
+    }
+}
+@media(min-width:55em){
+    .cards-body{
+        grid-column: span 4;
+    }
+    .cards-filmes{
+        row-gap: 2em;
+        transform: translatey(0);
+    }
+    .cards-body:hover{
+        transition: .5s ease-in-out;
+        transform: translatey(-1em);        
+    }
+}
